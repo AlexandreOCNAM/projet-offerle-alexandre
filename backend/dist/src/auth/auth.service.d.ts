@@ -25,4 +25,9 @@ export declare class AuthService {
         createdAt: Date;
         updatedAt: Date;
     }>;
+    refreshToken(user: any): Promise<{
+        accessToken: string;
+        refreshToken: string;
+        expiresIn: number;
+    }>;
 }

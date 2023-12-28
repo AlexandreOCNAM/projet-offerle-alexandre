@@ -45,6 +45,13 @@ let UserService = class UserService {
             }
         });
     }
+    async findById(id) {
+        return await this.prisma.user.findUnique({
+            where: {
+                id: id
+            }
+        });
+    }
 };
 exports.UserService = UserService;
 exports.UserService = UserService = __decorate([

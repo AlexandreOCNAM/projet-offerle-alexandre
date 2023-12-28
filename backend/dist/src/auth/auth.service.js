@@ -14,6 +14,7 @@ const common_1 = require("@nestjs/common");
 const user_service_1 = require("../user/user.service");
 const bcrypt_1 = require("bcrypt");
 const jwt_1 = require("@nestjs/jwt");
+const EXPIRE_TIME = 1000 * 60 * 60 * 24 * 1;
 let AuthService = class AuthService {
     constructor(userService, jwtService) {
         this.userService = userService;
@@ -49,6 +50,23 @@ let AuthService = class AuthService {
             return result;
         }
         throw new common_1.UnauthorizedException('Invalid credentials');
+    }
+    async refreshToken(user) {
+        const payload = {
+            username: user.username,
+            sub: user.sub,
+        };
+        return {
+            accessToken: await this.jwtService.signAsync(payload, {
+                expiresIn: '20s',
+                secret: process.env.JWT_SECRET,
+            }),
+            refreshToken: await this.jwtService.signAsync(payload, {
+                expiresIn: '7d',
+                secret: process.env.JWT_REFRESH_SECRET,
+            }),
+            expiresIn: new Date().setTime(new Date().getTime() + EXPIRE_TIME),
+        };
     }
 };
 exports.AuthService = AuthService;

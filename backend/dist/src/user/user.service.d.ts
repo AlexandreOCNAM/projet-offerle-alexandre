@@ -19,4 +19,12 @@ export declare class UserService {
         createdAt: Date;
         updatedAt: Date;
     }>;
+    findById(id: number): Promise<{
+        id: number;
+        email: string;
+        username: string;
+        password: string;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
 }

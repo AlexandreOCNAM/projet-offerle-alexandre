@@ -25,4 +25,9 @@ export declare class AuthController {
             refreshToken: string;
         };
     }>;
+    refreshToken(req: any): Promise<{
+        accessToken: string;
+        refreshToken: string;
+        expiresIn: number;
+    }>;
 }
