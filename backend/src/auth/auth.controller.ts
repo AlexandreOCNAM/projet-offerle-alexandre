@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { CreateUserDto } from 'src/user/dto/user.dto';
 import { UserService } from 'src/user/user.service';
 import { RefreshJwtGuard } from './guards/refresh.guard';
+import { LoginDto } from './dot/auth.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -15,7 +16,7 @@ export class AuthController {
   }
 
   @Post('login')
-  async loginUser(@Body() dto: CreateUserDto) {
+  async loginUser(@Body() dto: LoginDto) {
     return await this.authService.login(dto);
   }
 

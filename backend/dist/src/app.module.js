@@ -15,14 +15,16 @@ const auth_module_1 = require("./auth/auth.module");
 const config_1 = require("@nestjs/config");
 const user_module_1 = require("./user/user.module");
 const swagger_1 = require("@nestjs/swagger");
+const cars_module_1 = require("./cars/cars.module");
+const cars_service_1 = require("./cars/cars.service");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [config_1.ConfigModule.forRoot(), user_module_1.UserModule, auth_module_1.AuthModule, prisma_module_1.PrismaModule, swagger_1.SwaggerModule],
+        imports: [config_1.ConfigModule.forRoot(), user_module_1.UserModule, auth_module_1.AuthModule, prisma_module_1.PrismaModule, swagger_1.SwaggerModule, cars_module_1.CarsModule],
         controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService, prisma_module_1.PrismaModule],
+        providers: [app_service_1.AppService, prisma_module_1.PrismaModule, cars_service_1.CarsService],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map

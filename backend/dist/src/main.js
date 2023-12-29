@@ -6,6 +6,14 @@ const swagger_1 = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
+    app.enableCors({
+        origin: '*',
+        credentials: true,
+        allowedHeaders: 'Content-Type, Accept, Authorization',
+        preflightContinue: false,
+        optionsSuccessStatus: 204,
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    });
     app.useGlobalPipes(new common_1.ValidationPipe({
         whitelist: true,
         transform: true,

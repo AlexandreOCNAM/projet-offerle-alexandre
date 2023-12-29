@@ -1,6 +1,7 @@
 import { AuthService } from './auth.service';
 import { CreateUserDto } from 'src/user/dto/user.dto';
 import { UserService } from 'src/user/user.service';
+import { LoginDto } from './dot/auth.dto';
 export declare class AuthController {
     private userService;
     private authService;
@@ -12,7 +13,7 @@ export declare class AuthController {
         createdAt: Date;
         updatedAt: Date;
     }>;
-    loginUser(dto: CreateUserDto): Promise<{
+    loginUser(dto: LoginDto): Promise<{
         user: {
             id: number;
             email: string;
