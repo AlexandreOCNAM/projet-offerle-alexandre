@@ -3,23 +3,25 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environments';
+import { User } from './models/user';
 
 @Injectable()
 export class ApiService {
   constructor(private http: HttpClient) {}
 
-  public loginClient(username: string, email: string, password: string ) {
-    let data: String;
-    let httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-      }),
-    };
-    data = '{"username":"' + username + '","email":"' + email + '","password":"' + password + '"}';
-    return this.http.post(
-      environment.backendLoginClient + 'auth/login',
-      data,
-      httpOptions
-    );
+  public loginClient(email: string, password: string ) {
+    const url = environment.backendLoginClient + 'auth/login';
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post<User>(url, { email, password }, { headers });
+  }
+
+  public getProfileClient() {
+    const url = environment.backendLoginClient + 'user/1';
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.get(url, { headers });
   }
 }

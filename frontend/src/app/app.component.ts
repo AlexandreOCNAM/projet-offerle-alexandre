@@ -10,4 +10,12 @@ import { Observable } from 'rxjs';
 export class AppComponent {
   name = 'Angular';
 
+  constructor(private api: ApiService) {}
+
+  onClick() {
+    this.api.getProfileClient().subscribe((data) => {
+      console.log(data);
+    }
+    );
+  }
 }

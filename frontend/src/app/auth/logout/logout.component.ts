@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder} from '@angular/forms';
+import { AuthService } from 'src/app/auth.service';
 @Component({
   selector: 'app-logout',
   templateUrl: './logout.component.html',
@@ -11,13 +12,14 @@ export class LogoutComponent implements OnInit {
     
   }
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private api: AuthService) { }
 
   logoutForm = this.fb.group({
     confirmed: false,
   });
 
   onLogout() {
+    this.api.logOut();
     console.log("logged out");
     
   }
