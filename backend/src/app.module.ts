@@ -9,9 +9,10 @@ import { UserModule } from './user/user.module';
 import { SwaggerModule } from '@nestjs/swagger';
 import { CarsModule } from './cars/cars.module';
 import { CarsService } from './cars/cars.service';
+import { BrandsModule } from './brands/brands.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(), UserModule, AuthModule, PrismaModule, SwaggerModule, CarsModule],
+  imports: [ConfigModule.forRoot(), UserModule, AuthModule, PrismaModule, SwaggerModule, CarsModule, BrandsModule],
   controllers: [AppController],
   providers: [AppService, PrismaModule, CarsService],
 })
