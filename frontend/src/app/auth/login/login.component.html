@@ -18,7 +18,7 @@
       </div>
       <input type="password" id="password" class="input input-bordered w-full max-w-xs" formControlName="password" [ngClass]="{ 'input-error': loginForm.get('password')?.invalid && loginForm.get('password')?.touched  || isSubmitted }">
       <label class="label">
-        <span class="label-text-alt" *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched  || isSubmitted">Password is required</span>
+        <span class="label-text-alt" *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched  || isSubmitted ">Password is required</span>
       </label>
     </div>
     <div class="form-control mt-3">
