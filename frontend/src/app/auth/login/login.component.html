@@ -1,0 +1,40 @@
+<form class="card w-96 bg-base-300 shadow-xl" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="card-body">
+    <h2 class="card-title">Login</h2>
+    <div class="form-control mt-3">
+      <div class="form-control">
+        <div class="label">
+          <span class="label-text">What is your email?</span>
+        </div>
+        <input type="text" class="input input-bordered w-full max-w-xs" formControlName="email" [ngClass]="{ 'input-error': loginForm.get('email')?.invalid && loginForm.get('email')?.touched  || isSubmitted }" />
+      </div>
+      <label class="label">
+        <span class="label-text-alt" *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched  || isSubmitted">Email is required</span>
+      </label>
+    </div>
+    <div class="form-control mt-3">
+      <div class="label">
+        <span class="label-text">What is your password</span>
+      </div>
+      <input type="password" id="password" class="input input-bordered w-full max-w-xs" formControlName="password" [ngClass]="{ 'input-error': loginForm.get('password')?.invalid && loginForm.get('password')?.touched  || isSubmitted }">
+      <label class="label">
+        <span class="label-text-alt" *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched  || isSubmitted">Password is required</span>
+      </label>
+    </div>
+    <div class="form-control mt-3">
+      <label>
+        <input type="checkbox" class="checkbox">
+        <span class="label-text">Remember me</span>
+      </label>
+    </div>
+    <div class="form-control mt-3">
+      <label class="label">
+        <span class="label-text-alt">Not a member yet?</span>
+        <button class="btn btn-secondary btn-xs btn-primary ml-2">Sign up</button>
+      </label>
+    </div>
+    <div class="form-control mt-3">
+      <button type="submit" class="btn btn-primary w-full max-w-xs">Login</button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,68 @@
+<p>signin works!</p>
+<form class="card w-96 bg-base-300 shadow-xl" [formGroup]="signupForm" (ngSubmit)="onSignup()">
+  <div class="card-body">
+    <h2 class="card-title">Signup</h2>
+    <div class="form-control mt-3">
+      <div class="form-control">
+        <div class="label">
+          <span class="label-text">What is your username?</span>
+        </div>
+        <input type="text" class="input input-bordered w-full max-w-xs" formControlName="username"
+          [ngClass]="{ 'input-error': signupForm.get('username')?.invalid && signupForm.get('username')?.touched  || isSubmitted }" />
+      </div>
+      <label class="label">
+        <span class="label-text-alt"
+          *ngIf="signupForm.get('username')?.hasError('required') && signupForm.get('username')?.touched  || isSubmitted">Username
+          is required</span>
+      </label>
+    </div>
+    <div class="form-control mt-3">
+      <div class="form-control">
+        <div class="label">
+          <span class="label-text">What is your email?</span>
+        </div>
+        <input type="text" class="input input-bordered w-full max-w-xs" formControlName="email"
+          [ngClass]="{ 'input-error': signupForm.get('email')?.invalid && signupForm.get('email')?.touched  || isSubmitted }" />
+      </div>
+      <label class="label">
+        <span class="label-text-alt"
+          *ngIf="signupForm.get('email')?.hasError('required') && signupForm.get('email')?.touched  || isSubmitted">Email
+          is required</span>
+      </label>
+    </div>
+    <div class="form-control mt-3">
+      <div class="label">
+        <span class="label-text">What is your password</span>
+      </div>
+      <input type="password" id="password" class="input input-bordered w-full max-w-xs" formControlName="password"
+        [ngClass]="{ 'input-error': signupForm.get('password')?.invalid && signupForm.get('password')?.touched  || isSubmitted }">
+      <label class="label">
+        <span class="label-text-alt"
+          *ngIf="signupForm.get('password')?.hasError('required') && signupForm.get('password')?.touched  || isSubmitted">Password
+          is required</span>
+      </label>
+    </div>
+    <div class="form-control mt-3">
+      <div class="label">
+        <span class="label-text">Confirm your password</span>
+      </div>
+      <input type="password" id="password_confirm" class="input input-bordered w-full max-w-xs" formControlName="password"
+        [ngClass]="{ 'input-error': signupForm.get('password_confirm')?.invalid && signupForm.get('password_confirm')?.touched  || isSubmitted }">
+        
+      <label class="label">
+        <span class="label-text-alt"
+          *ngIf="signupForm.get('password_confirm')?.hasError('required') && signupForm.get('password_confirm')?.touched  || isSubmitted">Confirm your password
+          is required</span>
+      </label>
+    </div>
+    <div class="form-control mt-3">
+      <label class="label">
+        <span class="label-text-alt">Already a member ?</span>
+        <button class="btn btn-secondary btn-xs btn-primary ml-2">Signin</button>
+      </label>
+    </div>
+    <div class="form-control mt-3">
+      <button type="submit" class="btn btn-primary w-full max-w-xs">Signup</button>
+    </div>
+  </div>
+</form>
