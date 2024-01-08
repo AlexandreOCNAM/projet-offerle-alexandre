@@ -1,9 +1,11 @@
-FROM node:18 as builder
+FROM node:latest as build-stage
 WORKDIR /app
-ADD . /app
-RUN npm i && npm run build
-
-FROM caddy:2.6.4-alpine
-EXPOSE 4200
-COPY Caddyfile /etc/caddy/Caddyfile
-COPY --from=builder /app/dist/* /usr/share/caddy
+COPY package*.json ./
+RUN npm i
+COPY ./ .
+RUN npm run build
+FROM nginx:latest
+RUN mkdir /app
+COPY --from=build-stage /app/dist/tp05-alexandre-offerle /app
+COPY nginx.conf /etc/nginx/nginx.conf
+USER nginx
