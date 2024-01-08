@@ -1,21 +1,34 @@
-import { Component } from '@angular/core';
-import { ApiService } from './api.service';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from './_core/services/auth.service';
+import { User } from './models/user';
 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   name = 'Angular';
+  user?: User | null;
 
-  constructor(private api: ApiService) {}
+  constructor(public api: AuthService) {
+  }
 
-  onClick() {
-    this.api.getProfileClient().subscribe((data) => {
-      console.log(data);
+  ngOnInit() {
+    this.api.userSubject.subscribe((user) => {
+      console.log(user);
+      
+      this.user = user;
+
     }
     );
+  }
+
+  isLoggedIn() {
+    return this.api.isLoggedIn();
+  }
+
+  logOut() {
+    this.api.logOut();
   }
 }

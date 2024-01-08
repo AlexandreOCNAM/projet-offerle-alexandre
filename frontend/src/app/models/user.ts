@@ -1,12 +1,6 @@
 export class User{
-  user = {
-    id: 0,
-    email: '',
-    username: '',
-    password: '',
-  }
-  backendTokens = {
-    accessToken: '',
-    refreshToken: '',
-  }
+  id: number = 0;
+  email: string = '';
+  username: string = '';
+  password: string = '';
 }

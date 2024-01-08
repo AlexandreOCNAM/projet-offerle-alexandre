@@ -1,0 +1,8 @@
+<p>shop works!</p>
+<div *ngIf="cars$ | async as cars">
+  <div *ngFor="let car of cars">
+    <div>
+      <span>{{car.name}}</span>
+      <img [src]="car.image" alt="car image" />
+    </div>
+  </div>

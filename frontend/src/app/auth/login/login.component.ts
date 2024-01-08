@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl, FormBuilder} from '@angular/forms';
-import { ApiService } from 'src/app/api.service';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth.service';
+import { first } from 'rxjs';
+import { AuthService } from 'src/app/_core/services/auth.service';
 import { HttpLoginResponse } from 'src/app/interfaces/http';
 
 
@@ -31,9 +31,9 @@ export class LoginComponent implements OnInit {
       let email = this.loginForm.value.email;
       let password = this.loginForm.value.password;
       this.api.login(email!, password!).subscribe(
-        (response) => {
-          localStorage.setItem('token', response.backendTokens.accessToken);
-          this.router.navigateByUrl('/');
+        () => {
+          console.log("logged in");
+          this.router.navigate(['/']);
         }
       );
     }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder} from '@angular/forms';
-import { AuthService } from 'src/app/auth.service';
+import { AuthService } from 'src/app/_core/services/auth.service';
 @Component({
   selector: 'app-logout',
   templateUrl: './logout.component.html',
