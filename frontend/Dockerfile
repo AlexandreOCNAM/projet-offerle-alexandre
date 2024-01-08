@@ -6,4 +6,4 @@ RUN npm ci && npm run build
 FROM caddy:2.6.4-alpine
 EXPOSE 4200
 COPY Caddyfile /etc/caddy/Caddyfile
-COPY - from=builder /app/dist/frontend/* /usr/share/caddy
+COPY --from=builder /app/dist/frontend/* /usr/share/caddy
