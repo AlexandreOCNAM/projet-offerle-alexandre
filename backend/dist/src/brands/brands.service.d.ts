@@ -7,31 +7,26 @@ export declare class BrandsService {
     create(createBrandDto: CreateBrandDto): import(".prisma/client").Prisma.Prisma__BrandClient<{
         id: number;
         name: string;
-        createdAt: Date;
-        updatedAt: Date;
+        logo: string;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     findAll(): import(".prisma/client").Prisma.PrismaPromise<{
         id: number;
         name: string;
-        createdAt: Date;
-        updatedAt: Date;
+        logo: string;
     }[]>;
     findOne(id: number): import(".prisma/client").Prisma.Prisma__BrandClient<{
         id: number;
         name: string;
-        createdAt: Date;
-        updatedAt: Date;
+        logo: string;
     }, null, import("@prisma/client/runtime/library").DefaultArgs>;
     update(id: number, updateBrandDto: UpdateBrandDto): import(".prisma/client").Prisma.Prisma__BrandClient<{
         id: number;
         name: string;
-        createdAt: Date;
-        updatedAt: Date;
+        logo: string;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     remove(id: number): import(".prisma/client").Prisma.Prisma__BrandClient<{
         id: number;
         name: string;
-        createdAt: Date;
-        updatedAt: Date;
+        logo: string;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
 }

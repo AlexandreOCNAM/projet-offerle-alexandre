@@ -15,15 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CarsController = void 0;
 const common_1 = require("@nestjs/common");
 const cars_service_1 = require("./cars.service");
-const create_car_dto_1 = require("./dto/create-car.dto");
-const update_car_dto_1 = require("./dto/update-car.dto");
 const jwt_guard_1 = require("../auth/guards/jwt.guard");
 let CarsController = class CarsController {
     constructor(carsService) {
         this.carsService = carsService;
-    }
-    create(createCarDto) {
-        return this.carsService.create(createCarDto);
     }
     findAll() {
         return this.carsService.findAll();
@@ -31,22 +26,8 @@ let CarsController = class CarsController {
     findOne(id) {
         return this.carsService.findOne(+id);
     }
-    update(id, updateCarDto) {
-        return this.carsService.update(+id, updateCarDto);
-    }
-    remove(id) {
-        return this.carsService.remove(+id);
-    }
 };
 exports.CarsController = CarsController;
-__decorate([
-    (0, common_1.UseGuards)(jwt_guard_1.JwtGuard),
-    (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_car_dto_1.CreateCarDto]),
-    __metadata("design:returntype", void 0)
-], CarsController.prototype, "create", null);
 __decorate([
     (0, common_1.UseGuards)(jwt_guard_1.JwtGuard),
     (0, common_1.Get)(),
@@ -62,23 +43,6 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], CarsController.prototype, "findOne", null);
-__decorate([
-    (0, common_1.UseGuards)(jwt_guard_1.JwtGuard),
-    (0, common_1.Patch)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, update_car_dto_1.UpdateCarDto]),
-    __metadata("design:returntype", void 0)
-], CarsController.prototype, "update", null);
-__decorate([
-    (0, common_1.UseGuards)(jwt_guard_1.JwtGuard),
-    (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], CarsController.prototype, "remove", null);
 exports.CarsController = CarsController = __decorate([
     (0, common_1.Controller)('cars'),
     __metadata("design:paramtypes", [cars_service_1.CarsService])

@@ -9,12 +9,6 @@ export class CarsController {
   constructor(private readonly carsService: CarsService) {}
 
   @UseGuards(JwtGuard)
-  @Post()
-  create(@Body() createCarDto: CreateCarDto) {
-    return this.carsService.create(createCarDto);
-  }
-
-  @UseGuards(JwtGuard)
   @Get()
   findAll() {
     return this.carsService.findAll();
@@ -26,15 +20,4 @@ export class CarsController {
     return this.carsService.findOne(+id);
   }
 
-  @UseGuards(JwtGuard)
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCarDto: UpdateCarDto) {
-    return this.carsService.update(+id, updateCarDto);
-  }
-
-  @UseGuards(JwtGuard)
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.carsService.remove(+id);
-  }
 }

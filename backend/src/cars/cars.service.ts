@@ -9,17 +9,17 @@ export class CarsService {
   constructor(private prisma: PrismaService) { }
 
   create(createCarDto: CreateCarDto) {
-    return this.prisma.car.create({
+    return this.prisma.legoCar.create({
       data: createCarDto
     });
   }
 
   findAll() {
-    return this.prisma.car.findMany();
+    return this.prisma.legoCar.findMany();
   }
 
   findOne(id: number) {
-    return this.prisma.car.findUnique({
+    return this.prisma.legoCar.findUnique({
       where: {
         id: id
       }
@@ -27,7 +27,7 @@ export class CarsService {
   }
 
   update(id: number, updateCarDto: UpdateCarDto) {
-    return this.prisma.car.update({
+    return this.prisma.legoCar.update({
       where: {
         id: id
       },
@@ -36,7 +36,7 @@ export class CarsService {
   }
 
   remove(id: number) {
-    return this.prisma.car.delete({
+    return this.prisma.legoCar.delete({
       where: {
         id: id
       }

@@ -15,15 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BrandsController = void 0;
 const common_1 = require("@nestjs/common");
 const brands_service_1 = require("./brands.service");
-const create_brand_dto_1 = require("./dto/create-brand.dto");
-const update_brand_dto_1 = require("./dto/update-brand.dto");
 const jwt_guard_1 = require("../auth/guards/jwt.guard");
 let BrandsController = class BrandsController {
     constructor(brandsService) {
         this.brandsService = brandsService;
-    }
-    create(createBrandDto) {
-        return this.brandsService.create(createBrandDto);
     }
     findAll() {
         return this.brandsService.findAll();
@@ -31,22 +26,8 @@ let BrandsController = class BrandsController {
     findOne(id) {
         return this.brandsService.findOne(+id);
     }
-    update(id, updateBrandDto) {
-        return this.brandsService.update(+id, updateBrandDto);
-    }
-    remove(id) {
-        return this.brandsService.remove(+id);
-    }
 };
 exports.BrandsController = BrandsController;
-__decorate([
-    (0, common_1.UseGuards)(jwt_guard_1.JwtGuard),
-    (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_brand_dto_1.CreateBrandDto]),
-    __metadata("design:returntype", void 0)
-], BrandsController.prototype, "create", null);
 __decorate([
     (0, common_1.UseGuards)(jwt_guard_1.JwtGuard),
     (0, common_1.Get)(),
@@ -62,23 +43,6 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], BrandsController.prototype, "findOne", null);
-__decorate([
-    (0, common_1.UseGuards)(jwt_guard_1.JwtGuard),
-    (0, common_1.Patch)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, update_brand_dto_1.UpdateBrandDto]),
-    __metadata("design:returntype", void 0)
-], BrandsController.prototype, "update", null);
-__decorate([
-    (0, common_1.UseGuards)(jwt_guard_1.JwtGuard),
-    (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], BrandsController.prototype, "remove", null);
 exports.BrandsController = BrandsController = __decorate([
     (0, common_1.Controller)('brands'),
     __metadata("design:paramtypes", [brands_service_1.BrandsService])

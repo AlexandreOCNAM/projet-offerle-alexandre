@@ -4,49 +4,49 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export declare class CarsService {
     private prisma;
     constructor(prisma: PrismaService);
-    create(createCarDto: CreateCarDto): import(".prisma/client").Prisma.Prisma__CarClient<{
+    create(createCarDto: CreateCarDto): import(".prisma/client").Prisma.Prisma__LegoCarClient<{
         id: number;
         name: string;
+        description: string;
+        rating: number;
         price: number;
+        image: string;
         brandId: number;
-        release: Date;
-        createdAt: Date;
-        updatedAt: Date;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     findAll(): import(".prisma/client").Prisma.PrismaPromise<{
         id: number;
         name: string;
+        description: string;
+        rating: number;
         price: number;
+        image: string;
         brandId: number;
-        release: Date;
-        createdAt: Date;
-        updatedAt: Date;
     }[]>;
-    findOne(id: number): import(".prisma/client").Prisma.Prisma__CarClient<{
+    findOne(id: number): import(".prisma/client").Prisma.Prisma__LegoCarClient<{
         id: number;
         name: string;
+        description: string;
+        rating: number;
         price: number;
+        image: string;
         brandId: number;
-        release: Date;
-        createdAt: Date;
-        updatedAt: Date;
     }, null, import("@prisma/client/runtime/library").DefaultArgs>;
-    update(id: number, updateCarDto: UpdateCarDto): import(".prisma/client").Prisma.Prisma__CarClient<{
+    update(id: number, updateCarDto: UpdateCarDto): import(".prisma/client").Prisma.Prisma__LegoCarClient<{
         id: number;
         name: string;
+        description: string;
+        rating: number;
         price: number;
+        image: string;
         brandId: number;
-        release: Date;
-        createdAt: Date;
-        updatedAt: Date;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
-    remove(id: number): import(".prisma/client").Prisma.Prisma__CarClient<{
+    remove(id: number): import(".prisma/client").Prisma.Prisma__LegoCarClient<{
         id: number;
         name: string;
+        description: string;
+        rating: number;
         price: number;
+        image: string;
         brandId: number;
-        release: Date;
-        createdAt: Date;
-        updatedAt: Date;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
 }

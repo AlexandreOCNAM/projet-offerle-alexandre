@@ -5,14 +5,7 @@ export declare class ArticlesService {
     private prisma;
     constructor(prisma: PrismaService);
     create(createArticleDto: CreateArticleDto): string;
-    findAll(): import(".prisma/client").Prisma.PrismaPromise<{
-        id: number;
-        title: string;
-        description: string;
-        price: number;
-        createdAt: Date;
-        updatedAt: Date;
-    }[]>;
+    findAll(): any;
     findOne(id: number): string;
     update(id: number, updateArticleDto: UpdateArticleDto): string;
     remove(id: number): string;

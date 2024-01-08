@@ -10,15 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Article {
-  id          Int      @id @default(autoincrement())
-  title       String
-  description String?
-  price       Int
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-}
-
 model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
@@ -30,17 +21,18 @@ model User {
 
 model Brand {
   id        Int      @id @default(autoincrement())
-  name      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  name      String   @unique
+  logo      String?
 }
 
-model Car {
-  id        Int      @id @default(autoincrement())
-  name      String
-  price     Int
-  brandId   Int      @map("brand_id")
-  release   DateTime
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model LegoCar {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  description String?
+  rating      Float?
+  price       Float
+  image       String?
+  brandId     Int
 }
+
+
