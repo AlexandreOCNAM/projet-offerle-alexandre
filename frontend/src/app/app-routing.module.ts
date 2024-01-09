@@ -6,12 +6,14 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import { SignupComponent } from './signup/signup.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HomeComponent } from './home/home.component';
+import { ShopComponent } from './shop/shop.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent},
   { path: 'logout', component: LogoutComponent},
   { path: 'register', component: SignupComponent},
+  { path: 'shop', component: ShopComponent},
   { path: 'not-found', component: NotfoundComponent},
   { path: '**', redirectTo: 'not-found'}
 ];

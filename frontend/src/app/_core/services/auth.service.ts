@@ -33,6 +33,20 @@ export class AuthService {
       map((response) => {
         localStorage.setItem('token', response.backendTokens.accessToken);
         localStorage.setItem('user', JSON.stringify(response.user));
+        localStorage.setItem('tokenExpiration', response.backendTokens.expiresIn),
+        this.userSubject.next(response.user);
+        return response;
+      })
+    );
+  }
+
+  refresh() {
+    const url = 'http://localhost:8000/auth/refresh';
+    return this.http.post<HttpLoginResponse>(url, { refreshToken: localStorage.getItem('refreshToken') }).pipe(
+      map((response) => {
+        localStorage.setItem('token', response.backendTokens.accessToken);
+        localStorage.setItem('user', JSON.stringify(response.user));
+        localStorage.setItem('tokenExpiration', response.backendTokens.expiresIn),
         this.userSubject.next(response.user);
         return response;
       })

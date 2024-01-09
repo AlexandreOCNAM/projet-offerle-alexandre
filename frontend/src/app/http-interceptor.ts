@@ -8,16 +8,21 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { ApiService } from './_core/services/api.service';
+import { AuthService } from './_core/services/auth.service';
 
 @Injectable()
 export class ApiHttpInterceptor implements HttpInterceptor {
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const token: string = localStorage.getItem('token')!;
+    if (localStorage.getItem('tokenExpiration')! < Date.now().toString()) {
+      this.authService.refresh();
+    }
     if (token) {
       const cloned = req.clone({
         headers: req.headers.set('Authorization', 'Bearer ' + token),

@@ -14,11 +14,12 @@ import { ShopComponent } from './shop/shop.component';
 import { CarService } from './_core/services/car.service';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HomeComponent } from './home/home.component';
+import { CarComponent } from './shop/car/car.component';
 
 
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule, AppRoutingModule],
-  declarations: [AppComponent, LoginComponent, LogoutComponent, SignupComponent, ShopComponent, NotfoundComponent, HomeComponent],
+  declarations: [AppComponent, LoginComponent, LogoutComponent, SignupComponent, ShopComponent, NotfoundComponent, HomeComponent, CarComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiHttpInterceptor, multi: true },
     ApiService, CarService

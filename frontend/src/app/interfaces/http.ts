@@ -9,4 +9,5 @@ export interface HttpLoginResponse {
 export interface backendTokens {
   accessToken: string;
   refreshToken: string;
+  expiresIn: string;
 }

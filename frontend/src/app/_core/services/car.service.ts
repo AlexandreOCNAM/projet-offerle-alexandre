@@ -17,4 +17,12 @@ export class CarService {
     });
     return this.http.get<Car[]>(url, { headers });
   }
+
+  public searchCars(search: string): Observable<Car[]> {
+    const url = environment.backendLoginClient + 'cars/search?name=' + search;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.get<Car[]>(url, { headers });
+  }
 }

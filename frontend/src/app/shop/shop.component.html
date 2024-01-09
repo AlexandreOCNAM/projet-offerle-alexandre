@@ -1,8 +1,16 @@
-<p>shop works!</p>
-<div *ngIf="cars$ | async as cars">
-  <div *ngFor="let car of cars">
+<label for="search">Search: </label>
+<input
+  type="text"
+  id="search"
+  class="input w-full max-w-xs"
+  placeholder="Search..."
+  [(ngModel)]="search"
+  (ngModelChange)="updateSearch($event)"
+/>
+
+<div *ngIf="cars$ | async as cars" class="flex flex-row flex-wrap flex-shrink">
+  <div *ngFor="let car of cars" class="w-1/2 p-4">
     <div>
-      <span>{{car.name}}</span>
-      <img [src]="car.image" alt="car image" />
+      <app-car [car]="car"></app-car>
     </div>
   </div>
