@@ -13,9 +13,11 @@ import { User } from 'src/app/models/user';
 export class NavbarComponent {
   @Input() user?: User | null;
   nbCarInCart: number = 0;
+  totalPrice: number = 0;
 
   constructor(private authService: AuthService, private store: Store<{ cars: Car[] }>) { 
     this.store.select('cars').subscribe(cars => this.nbCarInCart = cars.length);
+    this.store.select('cars').subscribe(cars => this.totalPrice = cars.reduce((acc, car) => acc + car.price, 0));
   }
 
   isLoggedIn() {

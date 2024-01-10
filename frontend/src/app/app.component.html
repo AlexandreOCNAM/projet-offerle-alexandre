@@ -1,11 +1,10 @@
-
 <div class="flex flex-col min-h-screen">
-<app-navbar [user]="user"></app-navbar>
+  <app-navbar [user]="user"></app-navbar>
 
-<div class="container h-full">
+  <div class="flex items-center justify-center">
     <router-outlet></router-outlet>
-</div>
-<div class="flex-grow"></div>
+  </div>
+  <div class="flex-grow"></div>
 
-<app-footer></app-footer>
+  <app-footer></app-footer>
 </div>
