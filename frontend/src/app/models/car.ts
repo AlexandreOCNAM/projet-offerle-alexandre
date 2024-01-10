@@ -6,4 +6,5 @@ export class Car {
   description?: string = '';
   rating?: number = 0;
   image?: string = '';
+  isInCart?: boolean = false;
 }

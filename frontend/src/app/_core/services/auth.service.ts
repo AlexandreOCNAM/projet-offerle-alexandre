@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../../models/user';
-import { HttpLoginResponse } from '../../interfaces/http';
+import { HttpLoginResponse, backendTokens } from '../../interfaces/http';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 @Injectable({
   providedIn: 'root'
@@ -16,11 +16,12 @@ export class AuthService {
   }
 
   isLoggedIn() {
-    return localStorage.getItem('token') !== null;
+    return localStorage.getItem('token') && localStorage.getItem('tokenExpiration')! > Date.now().toString() ? true : false;
   }
 
   logOut() {
     localStorage.removeItem('token');
+    sessionStorage.removeItem('isLoggedIn');
   }
 
   get currentUserValue() {
@@ -32,8 +33,10 @@ export class AuthService {
     return this.http.post<HttpLoginResponse>(url, { email, password }).pipe(
       map((response) => {
         localStorage.setItem('token', response.backendTokens.accessToken);
+        localStorage.setItem('refreshToken', response.backendTokens.refreshToken);
         localStorage.setItem('user', JSON.stringify(response.user));
         localStorage.setItem('tokenExpiration', response.backendTokens.expiresIn),
+        sessionStorage.setItem('isLoggedIn', 'true');
         this.userSubject.next(response.user);
         return response;
       })
@@ -41,13 +44,13 @@ export class AuthService {
   }
 
   refresh() {
+    console.log('refreshing');
     const url = 'http://localhost:8000/auth/refresh';
-    return this.http.post<HttpLoginResponse>(url, { refreshToken: localStorage.getItem('refreshToken') }).pipe(
+    return this.http.post<backendTokens>(url, { refreshToken: localStorage.getItem('refreshToken') }).pipe(
       map((response) => {
-        localStorage.setItem('token', response.backendTokens.accessToken);
-        localStorage.setItem('user', JSON.stringify(response.user));
-        localStorage.setItem('tokenExpiration', response.backendTokens.expiresIn),
-        this.userSubject.next(response.user);
+        localStorage.setItem('token', response.accessToken);
+        localStorage.setItem('refreshToken', response.refreshToken);
+        localStorage.setItem('tokenExpiration', response.expiresIn);
         return response;
       })
     );

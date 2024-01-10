@@ -29,6 +29,12 @@ dependencies:
   '@angular/router':
     specifier: ^16.0.0
     version: 16.2.12(@angular/common@16.2.12)(@angular/core@16.2.12)(@angular/platform-browser@16.2.12)(rxjs@7.8.1)
+  '@ngrx/store':
+    specifier: ^17.0.1
+    version: 17.0.1(@angular/core@16.2.12)(rxjs@7.8.1)
+  '@ngxs/store':
+    specifier: ^3.8.2
+    version: 3.8.2(@angular/core@16.2.12)(rxjs@7.8.1)
   daisyui:
     specifier: ^4.4.24
     version: 4.5.0(postcss@8.4.33)
@@ -2036,6 +2042,17 @@ packages:
     resolution: {integrity: sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==}
     dev: true
 
+  /@ngrx/store@17.0.1(@angular/core@16.2.12)(rxjs@7.8.1):
+    resolution: {integrity: sha512-BmVzN+fqyz0ZrVEmJ+jrNwePMKcpNL49vb8sbQ3yDDftxgZz2HqRKFMexqlXpz5ixwK5LqTOblHNQOgi9irsTw==}
+    peerDependencies:
+      '@angular/core': ^17.0.0
+      rxjs: ^6.5.3 || ^7.5.0
+    dependencies:
+      '@angular/core': 16.2.12(rxjs@7.8.1)(zone.js@0.13.3)
+      rxjs: 7.8.1
+      tslib: 2.6.2
+    dev: false
+
   /@ngtools/webpack@16.2.11(@angular/compiler-cli@16.2.12)(typescript@5.0.4)(webpack@5.88.2):
     resolution: {integrity: sha512-4ndXJ4s94ZsryVGSDk/waIDrUqXqdGWftoOEn81Zu+nkL9ncI/G1fNUlSJ5OqeKmMLxMFouoy+BuJfvT+gEgnQ==}
     engines: {node: ^16.14.0 || >=18.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
@@ -2048,6 +2065,17 @@ packages:
       typescript: 5.0.4
       webpack: 5.88.2(esbuild@0.18.17)
     dev: true
+
+  /@ngxs/store@3.8.2(@angular/core@16.2.12)(rxjs@7.8.1):
+    resolution: {integrity: sha512-IovxuGQDEpB9VefmbTaV1k4hms4iZ4aS9gPVZOC+qzyfvpi7zrUEsjo+yT6FfVBmBg/RLUmPCtqArzbKU5XrLQ==}
+    peerDependencies:
+      '@angular/core': '>=12.0.0 <18.0.0'
+      rxjs: '>=6.5.5'
+    dependencies:
+      '@angular/core': 16.2.12(rxjs@7.8.1)(zone.js@0.13.3)
+      rxjs: 7.8.1
+      tslib: 2.6.2
+    dev: false
 
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}

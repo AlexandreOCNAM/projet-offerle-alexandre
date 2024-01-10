@@ -19,8 +19,12 @@ export class ApiHttpInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    console.log('intercepting')
+    console.log(localStorage.getItem('tokenExpiration')!, Date.now().toString());
     const token: string = localStorage.getItem('token')!;
     if (localStorage.getItem('tokenExpiration')! < Date.now().toString()) {
+      console.log('token expired');
+      localStorage.removeItem('tokenExpiration');
       this.authService.refresh();
     }
     if (token) {

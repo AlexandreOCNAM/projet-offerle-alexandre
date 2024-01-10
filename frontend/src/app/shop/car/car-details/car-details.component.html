@@ -1,0 +1,8 @@
+<div class="bg-base-100">
+  <h1 class="text-3xl font-bold">{{car.name}}</h1>
+  <p class="text-gray-500">{{car.description}}</p>
+  <div class="flex items-center mt-4">
+    <span class="text-2xl font-bold text-gray-700 mr-4">{{car.price}}</span>
+    <button (click)="removeFromCart(car)" class="bg-gray-700 text-white px-4 py-2 rounded-full focus:outline-none">Remove From Cart ?</button>
+  </div>
+</div>

@@ -1,12 +1,6 @@
 <label for="search">Search: </label>
-<input
-  type="text"
-  id="search"
-  class="input w-full max-w-xs"
-  placeholder="Search..."
-  [(ngModel)]="search"
-  (ngModelChange)="updateSearch($event)"
-/>
+<input type="text" id="search" class="input w-full max-w-xs" placeholder="Search..." [(ngModel)]="search"
+  (ngModelChange)="updateSearch($event)" />
 
 <div *ngIf="cars$ | async as cars" class="flex flex-row flex-wrap flex-shrink">
   <div *ngFor="let car of cars" class="w-1/2 p-4">
@@ -14,3 +8,4 @@
       <app-car [car]="car"></app-car>
     </div>
   </div>
+</div>
