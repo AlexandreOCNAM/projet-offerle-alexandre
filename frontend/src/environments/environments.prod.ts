@@ -1,5 +1,4 @@
 export const environment = {
   production: true,
-  backendLoginClient: 'https://cnamdocker.onrender.com/',
-  backendCatalogue: 'https://cnamdocker.onrender.com/api/catalogue',
+  backendLoginClient: 'https://projet-offerle-alexandre-back.onrender.com',
 };
