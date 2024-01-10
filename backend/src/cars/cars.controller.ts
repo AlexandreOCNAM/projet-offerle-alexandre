@@ -1,12 +1,14 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Query, Logger } from '@nestjs/common';
 import { CarsService } from './cars.service';
-import { CreateCarDto } from './dto/create-car.dto';
-import { UpdateCarDto } from './dto/update-car.dto';
+import { SearchCarDto } from './dto/search-dto.dto';
 import { JwtGuard } from 'src/auth/guards/jwt.guard';
 
 @Controller('cars')
 export class CarsController {
-  constructor(private readonly carsService: CarsService) {}
+  constructor(
+    private readonly carsService: CarsService,
+    private logger: Logger = new Logger('log'),
+  ) {}
 
   @UseGuards(JwtGuard)
   @Get()
@@ -15,9 +17,15 @@ export class CarsController {
   }
 
   @UseGuards(JwtGuard)
+  @Get('search')
+  search(@Query() searchCarDto: SearchCarDto) {
+    this.logger.log(searchCarDto);
+    return this.carsService.findByName(searchCarDto.name);
+  }
+
+  @UseGuards(JwtGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.carsService.findOne(+id);
   }
-
 }

@@ -24,6 +24,7 @@ export declare class AuthController {
         backendTokens: {
             accessToken: string;
             refreshToken: string;
+            expiresIn: number;
         };
     }>;
     refreshToken(req: any): Promise<{

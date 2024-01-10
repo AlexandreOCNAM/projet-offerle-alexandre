@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../../models/user';
 import { HttpLoginResponse, backendTokens } from '../../interfaces/http';
 import { BehaviorSubject, Observable, map } from 'rxjs';
+import { environment } from 'src/environments/environments';
 @Injectable({
   providedIn: 'root'
 })
@@ -29,7 +30,7 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    const url = 'http://localhost:8000/auth/login';
+    const url = environment.backendLoginClient;
     return this.http.post<HttpLoginResponse>(url, { email, password }).pipe(
       map((response) => {
         localStorage.setItem('token', response.backendTokens.accessToken);
@@ -45,7 +46,7 @@ export class AuthService {
 
   refresh() {
     console.log('refreshing');
-    const url = 'http://localhost:8000/auth/refresh';
+    const url = environment.backendLoginClient;
     return this.http.post<backendTokens>(url, { refreshToken: localStorage.getItem('refreshToken') }).pipe(
       map((response) => {
         localStorage.setItem('token', response.accessToken);
@@ -57,12 +58,12 @@ export class AuthService {
   }
 
   getProfile() {
-    const url = 'http://localhost:8000/user/1';
+    const url = environment.backendLoginClient;
     return this.http.get(url);
   }
 
   register(email: string, password: string, username: string) {
-    const url = 'http://localhost:8000/auth/register';
+    const url = environment.backendLoginClient;
     return this.http.post<User>(url, { email, password, username });
   }
 

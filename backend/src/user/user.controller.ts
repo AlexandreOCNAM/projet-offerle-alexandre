@@ -4,12 +4,11 @@ import { JwtGuard } from 'src/auth/guards/jwt.guard';
 
 @Controller('user')
 export class UserController {
-
   constructor(private userService: UserService) {}
 
   @UseGuards(JwtGuard)
-  @Get(":id")
-  async getUserProfile(@Param("id") id: number) {
+  @Get(':id')
+  async getUserProfile(@Param('id') id: number) {
     return await this.userService.findById(id);
   }
 }

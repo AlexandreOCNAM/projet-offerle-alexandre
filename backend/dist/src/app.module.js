@@ -23,7 +23,15 @@ let AppModule = class AppModule {
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [config_1.ConfigModule.forRoot(), user_module_1.UserModule, auth_module_1.AuthModule, prisma_module_1.PrismaModule, swagger_1.SwaggerModule, cars_module_1.CarsModule, brands_module_1.BrandsModule],
+        imports: [
+            config_1.ConfigModule.forRoot(),
+            user_module_1.UserModule,
+            auth_module_1.AuthModule,
+            prisma_module_1.PrismaModule,
+            swagger_1.SwaggerModule,
+            cars_module_1.CarsModule,
+            brands_module_1.BrandsModule,
+        ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService, prisma_module_1.PrismaModule, cars_service_1.CarsService],
     })

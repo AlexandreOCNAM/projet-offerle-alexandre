@@ -18,7 +18,25 @@ let CarsService = class CarsService {
     }
     create(createCarDto) {
         return this.prisma.legoCar.create({
-            data: createCarDto
+            data: createCarDto,
+        });
+    }
+    findByName(name) {
+        common_1.Logger.warn(name);
+        return this.prisma.legoCar.findMany({
+            where: {
+                name: {
+                    contains: name,
+                    mode: 'insensitive',
+                },
+            },
+        });
+    }
+    findByRating(rating) {
+        return this.prisma.legoCar.findMany({
+            where: {
+                rating: rating,
+            },
         });
     }
     findAll() {
@@ -27,23 +45,23 @@ let CarsService = class CarsService {
     findOne(id) {
         return this.prisma.legoCar.findUnique({
             where: {
-                id: id
-            }
+                id: id,
+            },
         });
     }
     update(id, updateCarDto) {
         return this.prisma.legoCar.update({
             where: {
-                id: id
+                id: id,
             },
-            data: updateCarDto
+            data: updateCarDto,
         });
     }
     remove(id) {
         return this.prisma.legoCar.delete({
             where: {
-                id: id
-            }
+                id: id,
+            },
         });
     }
 };

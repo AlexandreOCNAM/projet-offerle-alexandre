@@ -11,7 +11,15 @@ import { CarsService } from './cars/cars.service';
 import { BrandsModule } from './brands/brands.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(), UserModule, AuthModule, PrismaModule, SwaggerModule, CarsModule, BrandsModule],
+  imports: [
+    ConfigModule.forRoot(),
+    UserModule,
+    AuthModule,
+    PrismaModule,
+    SwaggerModule,
+    CarsModule,
+    BrandsModule,
+  ],
   controllers: [AppController],
   providers: [AppService, PrismaModule, CarsService],
 })

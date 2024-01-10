@@ -13,6 +13,24 @@ export declare class CarsService {
         image: string;
         brandId: number;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+    findByName(name: string): import(".prisma/client").Prisma.PrismaPromise<{
+        id: number;
+        name: string;
+        description: string;
+        rating: number;
+        price: number;
+        image: string;
+        brandId: number;
+    }[]>;
+    findByRating(rating: number): import(".prisma/client").Prisma.PrismaPromise<{
+        id: number;
+        name: string;
+        description: string;
+        rating: number;
+        price: number;
+        image: string;
+        brandId: number;
+    }[]>;
     findAll(): import(".prisma/client").Prisma.PrismaPromise<{
         id: number;
         name: string;

@@ -16,6 +16,7 @@ export declare class AuthService {
         backendTokens: {
             accessToken: string;
             refreshToken: string;
+            expiresIn: number;
         };
     }>;
     validateUser(dto: LoginDto): Promise<{

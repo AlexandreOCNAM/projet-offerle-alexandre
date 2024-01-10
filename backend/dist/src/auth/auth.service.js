@@ -26,26 +26,27 @@ let AuthService = class AuthService {
             email: user.email,
             sub: {
                 id: user.id,
-                username: user.username
-            }
+                username: user.username,
+            },
         };
         return {
             user,
             backendTokens: {
                 accessToken: await this.jwtService.signAsync(payload, {
-                    expiresIn: '1h',
+                    expiresIn: '1d',
                     secret: process.env.JWT_SECRET,
                 }),
                 refreshToken: await this.jwtService.signAsync(payload, {
                     expiresIn: '7d',
                     secret: process.env.JWT_REFRESH_SECRET,
                 }),
+                expiresIn: new Date().setTime(new Date().getTime() + EXPIRE_TIME),
             },
         };
     }
     async validateUser(dto) {
         const user = await this.userService.findByEmail(dto.email);
-        if (user && await (0, bcrypt_1.compare)(dto.password, user.password)) {
+        if (user && (await (0, bcrypt_1.compare)(dto.password, user.password))) {
             const { password, ...result } = user;
             return result;
         }
@@ -58,7 +59,7 @@ let AuthService = class AuthService {
         };
         return {
             accessToken: await this.jwtService.signAsync(payload, {
-                expiresIn: '20s',
+                expiresIn: '1d',
                 secret: process.env.JWT_SECRET,
             }),
             refreshToken: await this.jwtService.signAsync(payload, {
@@ -72,6 +73,7 @@ let AuthService = class AuthService {
 exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [user_service_1.UserService, jwt_1.JwtService])
+    __metadata("design:paramtypes", [user_service_1.UserService,
+        jwt_1.JwtService])
 ], AuthService);
 //# sourceMappingURL=auth.service.js.map

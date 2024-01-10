@@ -15,13 +15,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CarsController = void 0;
 const common_1 = require("@nestjs/common");
 const cars_service_1 = require("./cars.service");
+const search_dto_dto_1 = require("./dto/search-dto.dto");
 const jwt_guard_1 = require("../auth/guards/jwt.guard");
 let CarsController = class CarsController {
-    constructor(carsService) {
+    constructor(carsService, logger = new common_1.Logger('log')) {
         this.carsService = carsService;
+        this.logger = logger;
     }
     findAll() {
         return this.carsService.findAll();
+    }
+    search(searchCarDto) {
+        this.logger.log(searchCarDto);
+        return this.carsService.findByName(searchCarDto.name);
     }
     findOne(id) {
         return this.carsService.findOne(+id);
@@ -37,6 +43,14 @@ __decorate([
 ], CarsController.prototype, "findAll", null);
 __decorate([
     (0, common_1.UseGuards)(jwt_guard_1.JwtGuard),
+    (0, common_1.Get)('search'),
+    __param(0, (0, common_1.Query)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [search_dto_dto_1.SearchCarDto]),
+    __metadata("design:returntype", void 0)
+], CarsController.prototype, "search", null);
+__decorate([
+    (0, common_1.UseGuards)(jwt_guard_1.JwtGuard),
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
@@ -45,6 +59,7 @@ __decorate([
 ], CarsController.prototype, "findOne", null);
 exports.CarsController = CarsController = __decorate([
     (0, common_1.Controller)('cars'),
-    __metadata("design:paramtypes", [cars_service_1.CarsService])
+    __metadata("design:paramtypes", [cars_service_1.CarsService,
+        common_1.Logger])
 ], CarsController);
 //# sourceMappingURL=cars.controller.js.map
