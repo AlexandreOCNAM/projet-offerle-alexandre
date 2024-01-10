@@ -9,12 +9,12 @@ COPY package*.json ./
 
 # Install app dependencies
 RUN npm install
-RUN npx prisma generate
-RUN npx prisma db pull
 
 # Bundle app source
 COPY . .
 
+RUN npx prisma generate
+RUN npx prisma db pull
 # Creates a "dist" folder with the production build
 RUN npm run build
 
