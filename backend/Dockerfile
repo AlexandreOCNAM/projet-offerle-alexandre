@@ -16,10 +16,10 @@ COPY . .
 RUN npx prisma db push --force-reset
 RUN npx prisma db seed
 
-FROM node:18-alpine
 
 # Creates a "dist" folder with the production build
 RUN npm run build
+FROM node:18-alpine
 
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package*.json ./
