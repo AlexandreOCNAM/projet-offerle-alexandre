@@ -11,9 +11,6 @@ COPY prisma ./prisma/
 # Install app dependencies
 RUN npm install
 
-RUN npx prisma db push --force-reset
-RUN npx prisma db seed
-
 COPY . .
 
 # Creates a "dist" folder with the production build
@@ -22,6 +19,9 @@ RUN npm run build
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/dist ./dist
+
+RUN npx prisma db push --force-reset
+RUN npx prisma db seed
 
 EXPOSE 8000
 CMD [ "npm", "run", "start:prod" ]
