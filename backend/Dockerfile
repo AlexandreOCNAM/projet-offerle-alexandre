@@ -11,9 +11,6 @@ COPY prisma ./prisma/
 # Install app dependencies
 RUN npm install
 
-RUN npx prisma db push --force-reset
-RUN npx prisma db seed
-
 COPY . .
 
 
