@@ -13,6 +13,7 @@ RUN npm install
 
 # Bundle app source
 COPY . .
+ENV DATABASE_URL="postgres://offerlea:vjAB9DkH9YHWbSIiW4YZZTC2kNL9fsaO@dpg-cm23krun7f5s73ergoi0-a.frankfurt-postgres.render.com/si_web_aofferle"
 
 RUN npx prisma generate
 RUN npx prisma db pull
