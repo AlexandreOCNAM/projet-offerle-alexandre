@@ -18,38 +18,47 @@ let UserService = class UserService {
         this.prisma = prisma;
     }
     async create(dto) {
-        const user = await this.prisma.user.findUnique({
+        let user = await this.prisma.user.findUnique({
             where: {
-                email: dto.email
-            }
+                email: dto.email,
+            },
         });
         if (user) {
-            throw new Error('User already exists');
+            throw new Error('Email already exists');
         }
+        user = await this.prisma.user.findFirst({
+            where: {
+                username: dto.username,
+            },
+        });
         const newUser = await this.prisma.user.create({
             data: {
                 ...dto,
-                password: await (0, bcrypt_1.hash)(dto.password, 10)
-            }
+                password: await (0, bcrypt_1.hash)(dto.password, 10),
+            },
         });
         const { password, ...result } = newUser;
         return result;
     }
-    login(dto) {
-        throw new Error('Method not implemented.');
-    }
     async findByEmail(email) {
         return await this.prisma.user.findUnique({
             where: {
-                email: email
-            }
+                email: email,
+            },
+        });
+    }
+    async findByUsername(username) {
+        return await this.prisma.user.findFirst({
+            where: {
+                username: username,
+            },
         });
     }
     async findById(id) {
         return await this.prisma.user.findUnique({
             where: {
-                id: id
-            }
+                id: id,
+            },
         });
     }
 };

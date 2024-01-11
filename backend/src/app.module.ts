@@ -8,7 +8,6 @@ import { UserModule } from './user/user.module';
 import { SwaggerModule } from '@nestjs/swagger';
 import { CarsModule } from './cars/cars.module';
 import { CarsService } from './cars/cars.service';
-import { BrandsModule } from './brands/brands.module';
 
 @Module({
   imports: [
@@ -18,7 +17,6 @@ import { BrandsModule } from './brands/brands.module';
     PrismaModule,
     SwaggerModule,
     CarsModule,
-    BrandsModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaModule, CarsService],

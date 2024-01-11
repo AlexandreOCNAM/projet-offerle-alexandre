@@ -5,47 +5,54 @@ import { hash } from 'bcrypt';
 
 @Injectable()
 export class UserService {
-  
   constructor(private prisma: PrismaService) {}
 
   async create(dto: CreateUserDto) {
-    const user = await this.prisma.user.findUnique({
+    let user = await this.prisma.user.findUnique({
       where: {
-        email: dto.email
-      }
+        email: dto.email,
+      },
     });
 
     if (user) {
-      throw new Error('User already exists');
+      throw new Error('Email already exists');
     }
+    user = await this.prisma.user.findFirst({
+      where: {
+        username: dto.username,
+      },
+    });
 
     const newUser = await this.prisma.user.create({
       data: {
         ...dto,
-        password: await hash(dto.password, 10)
-      }
+        password: await hash(dto.password, 10),
+      },
     });
 
     const { password, ...result } = newUser;
     return result;
   }
 
-  login(dto: CreateUserDto) {
-    throw new Error('Method not implemented.');
-  }
-
   async findByEmail(email: string) {
     return await this.prisma.user.findUnique({
       where: {
-        email: email
-      }
+        email: email,
+      },
+    });
+  }
+  async findByUsername(username: string) {
+    return await this.prisma.user.findFirst({
+      where: {
+        username: username,
+      },
     });
   }
   async findById(id: number) {
     return await this.prisma.user.findUnique({
       where: {
-        id: id
-      }
+        id: id,
+      },
     });
   }
 }

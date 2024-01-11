@@ -12,7 +12,6 @@ export declare class CarsController {
         rating: number;
         price: number;
         image: string;
-        brandId: number;
     }[]>;
     search(searchCarDto: SearchCarDto): import(".prisma/client").Prisma.PrismaPromise<{
         id: number;
@@ -21,7 +20,6 @@ export declare class CarsController {
         rating: number;
         price: number;
         image: string;
-        brandId: number;
     }[]>;
     findOne(id: string): import(".prisma/client").Prisma.Prisma__LegoCarClient<{
         id: number;
@@ -30,6 +28,5 @@ export declare class CarsController {
         rating: number;
         price: number;
         image: string;
-        brandId: number;
     }, null, import("@prisma/client/runtime/library").DefaultArgs>;
 }

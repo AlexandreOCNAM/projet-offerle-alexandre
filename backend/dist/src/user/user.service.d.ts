@@ -10,8 +10,15 @@ export declare class UserService {
         createdAt: Date;
         updatedAt: Date;
     }>;
-    login(dto: CreateUserDto): void;
     findByEmail(email: string): Promise<{
+        id: number;
+        email: string;
+        username: string;
+        password: string;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    findByUsername(username: string): Promise<{
         id: number;
         email: string;
         username: string;

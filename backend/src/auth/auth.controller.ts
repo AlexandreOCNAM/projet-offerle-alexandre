@@ -7,9 +7,11 @@ import { LoginDto } from './dot/auth.dto';
 
 @Controller('auth')
 export class AuthController {
+  constructor(
+    private userService: UserService,
+    private authService: AuthService,
+  ) {}
 
-  constructor(private userService: UserService, private authService: AuthService) {}
-  
   @Post('register')
   async registerUser(@Body() dto: CreateUserDto) {
     return await this.userService.create(dto);

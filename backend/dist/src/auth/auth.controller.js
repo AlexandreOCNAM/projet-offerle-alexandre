@@ -59,6 +59,7 @@ __decorate([
 ], AuthController.prototype, "refreshToken", null);
 exports.AuthController = AuthController = __decorate([
     (0, common_1.Controller)('auth'),
-    __metadata("design:paramtypes", [user_service_1.UserService, auth_service_1.AuthService])
+    __metadata("design:paramtypes", [user_service_1.UserService,
+        auth_service_1.AuthService])
 ], AuthController);
 //# sourceMappingURL=auth.controller.js.map

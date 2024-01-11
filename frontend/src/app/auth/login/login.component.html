@@ -4,12 +4,12 @@
     <div class="form-control mt-3">
       <div class="form-control">
         <div class="label">
-          <span class="label-text">What is your email?</span>
+          <span class="label-text">What is your email / Username?</span>
         </div>
         <input type="text" class="input input-bordered w-full max-w-xs" formControlName="email" [ngClass]="{ 'input-error': loginForm.get('email')?.invalid && loginForm.get('email')?.touched  || isSubmitted }" />
       </div>
       <label class="label">
-        <span class="label-text-alt" *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched  || isSubmitted">Email is required</span>
+        <span class="label-text-alt" *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched  || isSubmitted">Email / Username is required</span>
       </label>
     </div>
     <div class="form-control mt-3">

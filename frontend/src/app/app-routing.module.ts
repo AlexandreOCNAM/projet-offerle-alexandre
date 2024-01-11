@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'logout', component: LogoutComponent, canActivate: [IsSignedInGuard]},
   { path: 'cart', component: CartComponent, canActivate: [IsSignedInGuard]},
-  { path: 'register', component: SignupComponent},
+  { path: 'signup', component: SignupComponent},
   { path: 'checkout', component: CheckoutComponent, canActivate: [IsSignedInGuard]},
   { path: 'shop', component: ShopComponent, canActivate: [IsSignedInGuard]},
   { path: 'unauthorized', component: UnauthorizedComponent},

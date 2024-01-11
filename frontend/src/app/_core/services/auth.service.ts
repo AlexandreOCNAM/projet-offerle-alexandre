@@ -58,12 +58,12 @@ export class AuthService {
   }
 
   getProfile() {
-    const url = environment.backendLoginClient;
+    const url = environment.backendLoginClient + 'user/' + this.currentUserValue?.id;
     return this.http.get(url);
   }
 
   register(email: string, password: string, username: string) {
-    const url = environment.backendLoginClient;
+    const url = environment.backendLoginClient + 'auth/register';
     return this.http.post<User>(url, { email, password, username });
   }
 
