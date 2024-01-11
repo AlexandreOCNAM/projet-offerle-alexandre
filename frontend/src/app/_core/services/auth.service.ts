@@ -30,7 +30,7 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    const url = environment.backendLoginClient;
+    const url = environment.backendLoginClient + '/auth/login';
     return this.http.post<HttpLoginResponse>(url, { email, password }).pipe(
       map((response) => {
         localStorage.setItem('token', response.backendTokens.accessToken);
@@ -46,7 +46,7 @@ export class AuthService {
 
   refresh() {
     console.log('refreshing');
-    const url = environment.backendLoginClient;
+    const url = environment.backendLoginClient + '/auth/refresh';
     return this.http.post<backendTokens>(url, { refreshToken: localStorage.getItem('refreshToken') }).pipe(
       map((response) => {
         localStorage.setItem('token', response.accessToken);
