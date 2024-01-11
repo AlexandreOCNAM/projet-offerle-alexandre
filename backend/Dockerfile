@@ -11,10 +11,10 @@ COPY prisma ./prisma/
 # Install app dependencies
 RUN npm install
 
-COPY . .
-
 RUN npx prisma db push --force-reset
 RUN npx prisma db seed
+
+COPY . .
 
 
 # Creates a "dist" folder with the production build
