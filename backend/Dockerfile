@@ -13,6 +13,11 @@ RUN npm install
 
 COPY . .
 
+RUN npx prisma db push --force-reset
+RUN npx prisma db seed
+
+FROM node:18-alpine
+
 # Creates a "dist" folder with the production build
 RUN npm run build
 
