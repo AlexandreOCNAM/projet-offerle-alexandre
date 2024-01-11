@@ -30,7 +30,7 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    const url = environment.backendLoginClient + '/auth/login';
+    const url = environment.backendLoginClient + 'auth/login';
     return this.http.post<HttpLoginResponse>(url, { email, password }).pipe(
       map((response) => {
         localStorage.setItem('token', response.backendTokens.accessToken);
