@@ -25,7 +25,7 @@ export class AuthService {
   }
 
   get currentUserValue() {
-    return this.userSubject.value;
+    return this.userSubject;
   }
 
   login(email: string, password: string) {
@@ -52,11 +52,6 @@ export class AuthService {
         return response;
       })
     );
-  }
-
-  getProfile() {
-    const url = environment.backendLoginClient + 'user/' + this.currentUserValue?.id;
-    return this.http.get(url);
   }
 
   register(email: string, password: string, username: string) {
