@@ -2,26 +2,25 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../../_shared/models/user';
 import { HttpLoginResponse, backendTokens } from '../../_shared/interfaces/http';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import {BehaviorSubject, Observable, map, Subject} from 'rxjs';
 import { environment } from 'src/environments/environments';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  public userSubject: BehaviorSubject<User | null>;
+  public userSubject: Subject<User>;
   user$: Observable<User | null>;
 
   constructor(private http: HttpClient) {
-    this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
+    this.userSubject = new Subject();
     this.user$ = this.userSubject.asObservable();
   }
 
   isLoggedIn() {
-    return localStorage.getItem('token') && localStorage.getItem('tokenExpiration')! > Date.now().toString() ? true : false;
+    return sessionStorage.getItem('isLoggedIn')! === 'true';
   }
 
   logOut() {
-    localStorage.removeItem('token');
     sessionStorage.removeItem('isLoggedIn');
   }
 
@@ -34,9 +33,7 @@ export class AuthService {
     return this.http.post<HttpLoginResponse>(url, { email, password }).pipe(
       map((response) => {
         localStorage.setItem('token', response.backendTokens.accessToken);
-        localStorage.setItem('refreshToken', response.backendTokens.refreshToken);
         localStorage.setItem('user', JSON.stringify(response.user));
-        localStorage.setItem('tokenExpiration', response.backendTokens.expiresIn),
         sessionStorage.setItem('isLoggedIn', 'true');
         this.userSubject.next(response.user);
         return response;
