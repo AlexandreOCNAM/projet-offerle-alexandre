@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environments';
-import { User } from '../../models/user';
-import { Car } from 'src/app/models/car';
+import { User } from '../../_shared/models/user';
+import { Car } from 'src/app/_shared/models/car';
 
 @Injectable()
 export class CarService {

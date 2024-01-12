@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './_core/services/auth.service';
-import { User } from './models/user';
+import { User } from './_shared/models/user';
 
 @Component({
   selector: 'my-app',
@@ -17,7 +17,7 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     this.api.userSubject.subscribe((user) => {
       console.log(user);
-      
+
       this.user = user;
 
     }

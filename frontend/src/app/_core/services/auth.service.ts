@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../../models/user';
-import { HttpLoginResponse, backendTokens } from '../../interfaces/http';
+import { User } from '../../_shared/models/user';
+import { HttpLoginResponse, backendTokens } from '../../_shared/interfaces/http';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environments';
 @Injectable({

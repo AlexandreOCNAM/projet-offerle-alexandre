@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environments';
-import { User } from '../../models/user';
+import { User } from '../../_shared/models/user';
 
 @Injectable()
 export class ApiService {

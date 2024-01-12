@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from "@ngrx/store";
-import { Add_Car, Add_Car_To_Cart, Delete_Car_From_Cart } from "../actions/car-actions";
-import { Car } from "src/app/models/car";
+import { Add_Car, Add_Car_To_Cart, Delete_Car_From_Cart } from "../actions/cart-actions";
+import { Car } from "src/app/_shared/models/car";
 
 export const initialState = Array<Car>();
 

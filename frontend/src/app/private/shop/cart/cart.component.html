@@ -1,0 +1,16 @@
+<div class="flex w-full">
+  <div class="w-2/3">
+    <div *ngIf="cart$ | async as cars">
+      <div *ngFor="let car of cars">
+        <app-car-details [car]="car"></app-car-details>
+      </div>
+    </div>
+  </div>
+  <div class="divider divider-horizontal divider-accent"></div>
+  <div>
+    <app-cart-summary></app-cart-summary>
+    <a routerLink="/private/shop/checkout" class="btn btn-primary">Checkout</a>
+  </div>
+</div>
+
+
